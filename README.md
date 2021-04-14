@@ -4,6 +4,10 @@
 </h1>
 
 <p align="center">
+  <a href="https://www.linkedin.com/in/dimas-neto-136aa91a5/"><img alt="Made by" src="https://img.shields.io/badge/made%20by-Dimas%20Neto-%23EBA417"></a>
+</p>
+
+<p align="center">
   <a href="#-about-the-project">About the project</a> •
   <a href="#-technologies">Technologies</a> •
   <a href="#-getting-started">Getting started</a> •
@@ -65,6 +69,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <p align="center">
 <a href="https://www.linkedin.com/in/dimas-neto-136aa91a5/">
-Dimas Neto
+by Dimas Neto
 </a>
 </p>
