@@ -27,7 +27,7 @@ export default function PostPreview( { post }: PostPreviewProps) {
         if(session?.activeSubscription) {
             router.push(`/posts/${post.slug}`)
         }
-    }, [])
+    }, [session])
 
     return (
         <>
@@ -38,6 +38,7 @@ export default function PostPreview( { post }: PostPreviewProps) {
                 <article className={styles.post}>
                     <h1>{post.title}</h1>
                     <time>{post.updatedAt}</time>
+                    
                     <div 
                         className={`${styles.postContent} ${styles.previewContent}`}
                         dangerouslySetInnerHTML={{ __html: post.content }} 
@@ -77,13 +78,16 @@ export const getStaticProps: GetStaticProps = async ({ params}) => {
             day: '2-digit',
             month: 'long',
             year: 'numeric'
-        })
+        },
+        ),
     };
+
+    const THIRTY_MINUTES = 60 * 30; // 30 minutes
 
     return {
         props: {
             post,
         },
-        redirect: 60 * 30, // 30 minutes
-    }
-}
+        revalidate: THIRTY_MINUTES,
+    };
+};
