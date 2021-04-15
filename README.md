@@ -20,7 +20,7 @@
 
 ## 👩‍💻 About the project
 
-[Rocketseat](https://rocketseat.com.br/) Ignite ReactJS training.
+[Ig.news](https://ignews.vercel.app/) is a project created in [Rocketseat](https://rocketseat.com.br/) Ignite ReactJS training.
 
 In this project you can subscribe to read posts about the ReactJS world.
 
