@@ -1,7 +1,6 @@
 import { query as q } from 'faunadb'
 
 import NextAuth from 'next-auth'
-import { session } from 'next-auth/client'
 import Providers from 'next-auth/providers'
 
 import { fauna } from '../../../services/fauna'
@@ -23,7 +22,7 @@ export default NextAuth({
             q.Match(
               q.Index('subscription_by_user_ref'),
               q.Select(
-                "ref",
+                'ref',
                 q.Get(
                   q.Match(
                     q.Index('user-by-email'),
@@ -34,7 +33,7 @@ export default NextAuth({
             ),
             q.Match(
               q.Index('subscription_by_status'),
-              "active"
+              'active'
             )
             ])
           )
@@ -61,7 +60,7 @@ export default NextAuth({
               q.Exists(
                 q.Match(
                   q.Index('user-by-email'),
-                  q.Casefold(user.email)
+                  q.Casefold(email)
                 )
               )
             ),
@@ -72,16 +71,16 @@ export default NextAuth({
             q.Get(
               q.Match(
                 q.Index('user-by-email'),
-                q.Casefold(user.email)
+                q.Casefold(email)
               )
-            )
-          )
-        )
+            ),
+          ),
+        );
         
         return true 
       } catch {
         return false
       }
     },
-  }
-})
+  },
+});

@@ -8,11 +8,9 @@ export async function saveSubscription(
     customerId: string,
     createAction = false,
 ) {
- // Buscar o usuário no banco do FaunaDV com o ID {customerID}
- // Salvar os dados da subscription no FaunaDB
     const userRef = await fauna.query(
        q.Select(
-           "ref",
+           'ref',
            q.Get(
             q.Match(
                 q.Index('user_by_stripe_customer_id'),
@@ -29,7 +27,7 @@ export async function saveSubscription(
         userId: userRef,
         status: subscription.status,
         price_id: subscription.items.data[0].price.id,
-    }
+    };
     
     if (createAction) {
         await fauna.query(
@@ -42,16 +40,16 @@ export async function saveSubscription(
         await fauna.query(
             q.Replace(
                 q.Select(
-                    "ref",
+                    'ref',
                     q.Get(
                         q.Match(
                             q.Index('subscription_by_id'),
                             subscriptionId,
                         )
-                    )
+                    ),
                 ),
                 { data: subscriptionData }
-            )
-        )
+            ),
+        );
     }
 }

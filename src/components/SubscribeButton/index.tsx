@@ -19,7 +19,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
         }
 
         if (session.activeSubscription) {
-            router.push('/posts');
+            router.push('/posts')
             return;
         }
 
@@ -30,7 +30,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
 
             const stripe = await getStripeJs()
 
-            await stripe.redirectToCheckout({ sessionId })
+            stripe.redirectToCheckout({ sessionId })
         } catch (err) {
             alert(err.message);
         }
