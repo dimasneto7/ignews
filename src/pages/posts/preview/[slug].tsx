@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async ({ params}) => {
     const response = await prismic.getByUID('publication', String(slug), {})
 
     const post = {
-        slug,
+        slug: String(slug),
         title: RichText.asText(response.data.title),
         content: RichText.asHtml(response.data.content.splice(0, 3)),
         updatedAt: new Date(response.last_publication_date).toLocaleDateString('pt-BR', {
